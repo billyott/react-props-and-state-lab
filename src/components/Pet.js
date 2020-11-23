@@ -28,9 +28,20 @@ class Pet extends React.Component {
             <p>Weight: {this.props.pet.weight}</p>
           </div>
         </div>
-        <div className="extra content">
+        {/* <div className="extra content">
           <button className={!this.state.isAdopted ? "ui disabled button":null}>Already adopted</button>
           <button onClick={this.localOnAdoptPet} className={this.state.isAdopted ? "ui disabled button":"ui primary button"}>Adopt pet</button>
+        </div> */}
+        <div className="extra content">
+          {this.props.pet.isAdopted ? (
+            <button className="ui disabled button">Already adopted</button>
+          ) : (
+            <button
+              onClick={() => this.props.onAdoptPet(this.props.pet.id)}
+              className="ui primary button">
+              Adopt pet
+            </button>
+          )}
         </div>
       </div>
     )
